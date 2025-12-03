@@ -32,15 +32,16 @@ class TodoManager:
             created = t.get("created", "")
             print(f"{i}. [{status}] {t['description']} {urgent} - created: {created}")
 
-    def add_task(self, description):
+    def add_task(self, description, urgent):
         # TODO:
-        # 1. Adicionar um novo parâmetro 'urgent=False' a esta função
+        # 1. Adicionar um novo parâmetro 'urgent=False' a esta função (feito)
         # 2. Guardar no dicionário da tarefa a chave 'urgent': urgent
         # 3. Atualizar chamadas em main.py para passar esse parâmetro
         task = {
             "description": description,
-            "done": False,
+            "done": "",
             # 'urgent' não está presente - é aqui que os alunos devem adicionar
+            "urgent": urgent,
             "created": datetime.utcnow().isoformat() + "Z"
         }
         self.tasks.append(task)
