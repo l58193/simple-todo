@@ -25,19 +25,24 @@ def main():
     if cmd == "list":
         manager.list_tasks()
     elif cmd == "add":
+        urgent = False
         # TODO:
         # 1. Verificar se o utilizador passou o argumento --urgent
+        if sys.argv[2] == "--urgent":
+            urgent = True
+            args = sys.argv[3:]
         # 2. Passar essa informação para o método add_task(...)
         # 3. Alterar o JSON para guardar um campo "urgent": true/false
         #
         # Atualmente o suporte a "urgent" NÃO está implementado.
-        args = sys.argv[2:]
+        else:
+            args = sys.argv[2:]
         if not args:
             print("Error: missing description")
             return
         description = " ".join(args)
         # Por enquanto, chama add_task sem o parâmetro urgent (default).
-        manager.add_task(description)
+        manager.add_task(description, urgent)
     elif cmd == "done":
         if len(sys.argv) < 3:
             print("Error: missing id")
